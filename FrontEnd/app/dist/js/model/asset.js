@@ -2,9 +2,8 @@ export class Asset {
     constructor() {
         this.arrayAsset = [];
     }
-    addAsset(name, investment) {
+    addAsset(name) {
         this.name = name;
-        this.organize(investment);
     }
     organize(investmentType) {
         const investment = {

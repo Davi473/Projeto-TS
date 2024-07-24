@@ -4,15 +4,26 @@ export class InvestmentModel {
         this.investments = [];
     }
     organize(newInvestment) {
+        this.comparison(newInvestment);
+        this.alreadyInTheArray(newInvestment);
+    }
+    comparison(newInvestment) {
         if (!this.investments.some(investment => investment.name === newInvestment.assetType)) {
             const assetType = new AssetType();
-            assetType.addAssetType(newInvestment.assetType, newInvestment);
-            this.addInvestment(assetType);
+            assetType.addAssetType(newInvestment.assetType);
+            this.investments.push(assetType);
         }
-        console.log(JSON.stringify(this.investments));
     }
-    addInvestment(value) {
-        this.investments.push(value);
+    alreadyInTheArray(newInvestment) {
+        for (const investment of this.investments) {
+            this.compareTheObjects(investment, newInvestment);
+        }
+    }
+    compareTheObjects(investment, newInvestment) {
+        if (investment.name === newInvestment.assetType) {
+            investment.organize(newInvestment);
+            return;
+        }
     }
 }
 //# sourceMappingURL=investmentModel.js.map

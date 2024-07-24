@@ -5,18 +5,17 @@ import { OrganizeInvestment } from "../interface/organizeInvestment";
 export class Asset implements AssetInterface, OrganizeInvestment
 {
   
-  arrayAsset: Investment[];
   name: string;
+  arrayAsset: Investment[];
 
   constructor()
   {
     this.arrayAsset = [];
   }
 
-  addAsset (name: string, investment: any): void
+  addAsset (name: string): void
   {
     this.name = name;
-    this.organize(investment);
   }
   
   organize(investmentType: any): void 

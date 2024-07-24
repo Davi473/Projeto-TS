@@ -5,33 +5,52 @@ import { Asset } from "./asset.js";
 
 export class AssetType implements AssetTypeInterface, OrganizeInvestment
 {
-  arrayAssetType: Asset[];
   name: string;
+  arrayAssetType: Asset[];
 
   constructor ()
   {
     this.arrayAssetType = [];
   }
 
-  addAssetType (name: string, investment: any): void
+  addAssetType (name: string): void
   {
-
     this.name = name;
-    this.organize(investment);
   }
   
   organize (investmentAssetType: any): void 
   {
-    if (!this.arrayAssetType.some(investment => investment.name === investmentAssetType.asset))
+    this.comparison(investmentAssetType);
+    this.alreadyInTheArray(investmentAssetType);
+  }
+
+  comparison (investmentAssetType: any): void
+  {
+    if (
+      !this.arrayAssetType.some(investment => 
+        investment.name === investmentAssetType.asset)
+    )
     {
       const asset = new Asset();
-      asset.addAsset(investmentAssetType.asset, investmentAssetType);
-      this.addAssetArray(asset);
+      asset.addAsset(investmentAssetType.asset);
+      this.arrayAssetType.push(asset);
     }
   }
 
-  addAssetArray (value: Asset): void
+  alreadyInTheArray (investmentAssetType: any): void
   {
-    this.arrayAssetType.push(value);
+    for (const investment of this.arrayAssetType)
+    {
+      this.compareTheObjects(investment, investmentAssetType)
+    }
+  }
+
+  compareTheObjects (investment: Asset, investmentAssetType: any): void
+  {
+    if (investment.name === investmentAssetType.asset)
+    {
+      investment.organize(investmentAssetType);
+      return
+    }
   }
 }

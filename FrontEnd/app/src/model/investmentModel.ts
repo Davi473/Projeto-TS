@@ -4,7 +4,7 @@ import { AssetType } from "./assetType.js";
 export class InvestmentModel implements OrganizeInvestment
 {
   investments: AssetType[];
-
+  
   constructor() 
   {
     this.investments = [];
@@ -12,26 +12,40 @@ export class InvestmentModel implements OrganizeInvestment
 
   organize(newInvestment: any): void 
   {
-    if (!this.investments.some(investment => investment.name === newInvestment.assetType))
+    this.comparison(newInvestment);
+    this.alreadyInTheArray(newInvestment);
+  }
+
+  
+  comparison (newInvestment: any): void
+  {
+    if (
+      !this.investments.some(investment => 
+        investment.name === newInvestment.assetType)
+    )
     {
-      const assetType = new AssetType()
-      assetType.addAssetType(newInvestment.assetType, newInvestment)
-      this.addInvestment(assetType);
+      const assetType = new AssetType();
+      assetType.addAssetType(newInvestment.assetType);
+      this.investments.push(assetType);
     }
-    console.log(JSON.stringify(this.investments));
-    /*
+  }
+
+  alreadyInTheArray (newInvestment: any): void
+  {
     for (const investment of this.investments)
     {
-      if (investment.assetType === name.asset)
-      {
-
-      }
+      this.compareTheObjects(investment, newInvestment);
     }
-    */
   }
 
-  addInvestment (value: AssetType): void
+  compareTheObjects (investment: AssetType, newInvestment: any): void
   {
-    this.investments.push(value);
+    if (investment.name === newInvestment.assetType)
+    {
+      investment.organize(newInvestment);
+      return
+    }
   }
+
+  
 }

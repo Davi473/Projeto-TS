@@ -10,6 +10,7 @@ export class InvestmentController {
     constructor() {
         this.launchOfInvestments = [
             { assetType: "FIIs", asset: "MXRF11", number: 5, unitaryValue: 10.44, totalValue: 52.20 },
+            { assetType: "FIIs", asset: "MXRF11", number: 6, unitaryValue: 10.44, totalValue: 52.20 },
             { assetType: "Ações", asset: "BBDC4", number: 1, unitaryValue: 13.73, totalValue: 13.73 }
         ];
         this.init();
@@ -17,10 +18,9 @@ export class InvestmentController {
     init() {
         const organize = new InvestmentModel();
         for (const asset of this.launchOfInvestments) {
-            console.log(asset);
             organize.organize(asset);
-            return asset;
         }
+        console.log(JSON.stringify(organize, null, 2));
     }
 }
 __decorate([

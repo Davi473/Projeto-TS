@@ -1,6 +1,6 @@
 import { AssetType } from "../model/assetType.js";
 import { View } from "./view.js";
-
+/*
 export class InvestmentView extends View<AssetType>
 {
   protected template(model: AssetType): string {
@@ -33,3 +33,4 @@ export class InvestmentView extends View<AssetType>
   }
   
 }
+  */
