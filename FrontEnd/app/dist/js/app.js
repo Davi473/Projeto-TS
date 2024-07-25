@@ -1,3 +1,3 @@
-import { InvestmentController } from "./controller/investmentController.js";
+import { InvestmentController } from "./controller/investimentosController.js";
 const investmentController = new InvestmentController();
 //# sourceMappingURL=app.js.map
