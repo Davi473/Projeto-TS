@@ -1,5 +1,6 @@
 import { domQuerySelect } from "../decorators/domSelector.js";
 import { InvestimentoModel } from "../model/InvestimentoModel.js";
+import { InvestmentView } from "../view/tiposDeInvestimentoView.js";
 
 export class InvestmentController
 {
@@ -21,6 +22,8 @@ export class InvestmentController
   {
     const organize = new InvestimentoModel(this.launchOfInvestments);
     console.log(JSON.stringify(organize.todosOsTiposDeAtivos, null, 2));
+
+    const view = new InvestmentView(organize.todosOsTiposDeAtivos);
     
   }
 }

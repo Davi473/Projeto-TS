@@ -21,4 +21,19 @@ export class Ativos
         valorTotal: investimento.valorTotal
       })
   }
+
+  media(): number
+  {
+    let quantidade = 0;
+    let valorMaximo = 0;
+    for (const investimentos of this.investimentos)
+    {
+      quantidade += investimentos.quantidade;
+      valorMaximo += investimentos.precoPorUnidade;
+    }
+    const media = valorMaximo / quantidade;
+    return media;
+    console.log(quantidade)
+    console.log(valorMaximo)
+  }
 }

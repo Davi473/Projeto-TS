@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { domQuerySelect } from "../decorators/domSelector.js";
 import { InvestimentoModel } from "../model/InvestimentoModel.js";
+import { InvestmentView } from "../view/tiposDeInvestimentoView.js";
 export class InvestmentController {
     constructor() {
         this.launchOfInvestments = [
@@ -18,6 +19,7 @@ export class InvestmentController {
     init() {
         const organize = new InvestimentoModel(this.launchOfInvestments);
         console.log(JSON.stringify(organize.todosOsTiposDeAtivos, null, 2));
+        const view = new InvestmentView(organize.todosOsTiposDeAtivos);
     }
 }
 __decorate([
